@@ -1,9 +1,0 @@
-body { 
-  padding-top: 100px;
-}
-
-.menu{
-  display: flex;
-  width: 15%;
-  justify-content:space-around;
-}
