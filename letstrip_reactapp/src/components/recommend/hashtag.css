@@ -1,0 +1,28 @@
+.Hashtag {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  button {
+    font-size: 1em;
+    margin: 10px;
+    padding: 10px 20px;
+  }
+  
+  .selected {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  button:hover {
+    cursor: pointer;
+  }
+  
+  button:active {
+    transform: scale(0.98);
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
