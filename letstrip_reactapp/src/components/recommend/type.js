@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import './type.css';
 
 function Typecheck(){
   const [selectedTypes, setSelectedTypes] = useState([]);
@@ -19,8 +18,8 @@ function Typecheck(){
   const tourismTypes = ['자연', '역사', '문화', '쇼핑', '레포트'];
 
   return (
-    <div className="App">
-      <h1>선호하는 관광타입을 선택해주세요</h1>
+    <div className="selecting">
+      <h1>선호하는 관광타입을 선택해주세요!</h1>
       {tourismTypes.map(type => (
         <button
           key={type}
