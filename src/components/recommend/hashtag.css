@@ -21,6 +21,10 @@
   button:active {
     transform: scale(0.98);
   }
+
+  .button-container {
+    margin-top: 40px;
+  }
   
   ul {
     list-style: none;

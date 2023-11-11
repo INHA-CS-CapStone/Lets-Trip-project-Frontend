@@ -22,6 +22,7 @@ function Result() {
             <h2>{place.name}</h2>
             <p>Rating: {place.rating}</p>
             <p>Review Count: {place.review_count}</p>
+            <p>Type: {place.type}</p>
           </div>
         ))
       ) : (
