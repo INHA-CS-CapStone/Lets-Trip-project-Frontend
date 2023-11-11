@@ -13,7 +13,9 @@ function Input() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form class="selecting" onSubmit={handleSubmit}>
+      <h2>숙소위치를 입력해주세요!</h2>
+      
       <input type="text" value={x} onChange={(e) => setX(e.target.value)} placeholder="Enter X coordinate" />
       <input type="text" value={y} onChange={(e) => setY(e.target.value)} placeholder="Enter Y coordinate" />
       <button type="submit">Submit</button>

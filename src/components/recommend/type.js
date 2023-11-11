@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import './type.css';
 
-function Type(){
+function Type() {
   const [selectedTypes, setSelectedTypes] = useState([]);
   const navigate = useNavigate();
 
@@ -25,20 +25,18 @@ function Type(){
   const tourismTypes = ['자연', '역사', '문화', '쇼핑', '레포츠'];
 
   return (
-    <div>
-      <div className="App">
-        <h1>선호하는 관광타입을 선택해 주세요!</h1>
-        <p>최대 2개까지 선택 가능합니다.</p>
-        {tourismTypes.map(type => (
-          <button
-            key={type}
-            className={selectedTypes.includes(type) ? 'selected' : ''}
-            onClick={() => handleTypeClick(type)}
-          >
-            {type}
-          </button>
-        ))}
-      </div>
+    <div className="selecting">
+      <h1>선호하는 관광타입을 선택해 주세요!</h1>
+      <p>최대 2개까지 선택 가능합니다.</p>
+      {tourismTypes.map(type => (
+        <button
+          key={type}
+          className={selectedTypes.includes(type) ? 'selected' : ''}
+          onClick={() => handleTypeClick(type)}
+        >
+          {type}
+        </button>
+      ))}
       <div className="button-container">
         <button onClick={handleNextClick}>다음</button>
       </div>

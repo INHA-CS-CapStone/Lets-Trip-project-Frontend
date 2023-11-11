@@ -15,7 +15,7 @@ function Result() {
   }, [x, y]);
 
   return (
-    <div>
+    <div className="selecting">
         {places.length > 0 ? (
         places.map((place, index) => (
           <div key={index}>
