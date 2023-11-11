@@ -15,13 +15,14 @@ function Result() {
   }, [x, y]);
 
   return (
-    <div>
+    <div className="selecting">
         {places.length > 0 ? (
         places.map((place, index) => (
           <div key={index}>
             <h2>{place.name}</h2>
             <p>Rating: {place.rating}</p>
             <p>Review Count: {place.review_count}</p>
+            <p>Type: {place.type}</p>
           </div>
         ))
       ) : (

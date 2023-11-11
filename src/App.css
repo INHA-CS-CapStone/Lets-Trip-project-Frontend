@@ -11,7 +11,7 @@ body {
 }
 
 .selecting button {
-  margin: 0 5px; /* 버튼 사이의 간격을 조절합니다 */
+  margin: 5px; 
 }
 
 button {

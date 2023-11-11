@@ -11,15 +11,9 @@
     align-items: center;
 }
 
-.menu_inner {
-    display: flex;
-    align-items: center;
-}
-
 .logo {
     font-size: 50px;
     font-style: oblique;
-    color: #fff;
 }
 
 ul {
@@ -38,11 +32,14 @@ a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    font-size: 16px;
-    margin: 0 10px;
-    transition: color 0.3s;
 }
 
-a:hover {
+li > a {
+    transition: color 0.3s;
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+li > a:hover {
     color: #333;
 }

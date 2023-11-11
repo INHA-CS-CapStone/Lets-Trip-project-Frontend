@@ -5,8 +5,6 @@ import Input from './components/recommend/input';
 import Result from './components/recommend/result';
 import Type from './components/recommend/type';
 import Hashtag from './components/recommend/hashtag';
-import Mypage from './components/mainpage/mypage';
-import Community from './components/mainpage/community';
 
 function Router() {
 
@@ -16,8 +14,6 @@ function Router() {
         <Menu></Menu>
         <Routes>
           <Route path="/" element={<Main />}></Route>
-          <Route path="/mypage" element={<Mypage />}></Route>
-          <Route path="/community" element={<Community />}></Route>
           <Route path="/input" element={<Input />}></Route>
           <Route path="/result" element={<Result/>}></Route>
           <Route path="/type" element={<Type />}></Route>
