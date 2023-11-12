@@ -35,7 +35,7 @@ function Hashtag() {
 
   return (
     <div className="selecting">
-      <h1>선호하는 여행지 키워드를 선택해주세요!</h1>
+      <h1>선호하는 여행지 키워드를 선택해 주세요!</h1>
       <p>최대 5개까지 선택 가능합니다.</p>
       <div className="tag-container">
         {tagNames.map(tag => (
