@@ -3,10 +3,8 @@
     margin-top: 50px;
   }
   
-  button {
-    font-size: 1em;
-    margin: 10px;
-    padding: 10px 20px;
+  .tag-container button {
+    width: 120px;
   }
   
   .selected {
@@ -29,4 +27,9 @@
   ul {
     list-style: none;
     padding: 0;
+  }
+  .tag-container {
+    width: 650px;
+    display: flex;
+    flex-wrap: wrap;
   }
