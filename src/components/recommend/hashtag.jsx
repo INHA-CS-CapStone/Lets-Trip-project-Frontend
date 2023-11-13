@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import './button.css';
 
 function Hashtag() {
   const location = useLocation();
@@ -36,7 +37,7 @@ function Hashtag() {
     <div className="selecting">
       <h1>선호하는 여행지 키워드를 선택해 주세요!</h1>
       <p>최대 5개까지 선택 가능합니다.</p>
-      <div className="tag-container">
+      <div className="selecting">
         {tagNames.map(tag => (
           <button
             key={tag}

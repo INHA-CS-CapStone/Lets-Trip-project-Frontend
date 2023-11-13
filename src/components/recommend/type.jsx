@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
+import './button.css';
 
 function Type() {
   const [selectedTypes, setSelectedTypes] = useState([]);
