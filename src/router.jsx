@@ -1,9 +1,9 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Menu from './components/mainpage/menu';
-import Result from './components/recommend/result';
-import Type from './components/recommend/type';
-import Search from './components/recommend/search';
-import Hashtag from './components/recommend/hashtag';
+import Result from './components/mainpage/result';
+import Type from './components/mainpage/type';
+import Search from './components/mainpage/search';
+import Hashtag from './components/mainpage/hashtag';
 
 function Router() {
 
