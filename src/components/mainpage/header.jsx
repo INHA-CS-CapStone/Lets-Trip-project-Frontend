@@ -1,20 +1,29 @@
-import './header.css'
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import React from "react";
 
-class Header extends Component {
-    render() {
-        return (
-            <div className="menu">
-                <div className="logo"><Link to="/">Let's Trip!</Link></div>
-                <div className="menu_inner">
-                    <ul>
-                        <li><Link to="/type">플래너 제작</Link></li>
-                    </ul>
-                </div>
+export const Header = (props) => {
+  return (
+    <header id="header">
+      <div className="intro">
+        <div className="overlay">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-8 col-md-offset-2 intro-text">
+                <h1>
+                  {props.data ? props.data.title : "Loading"}
+                  <span></span>
+                </h1>
+                <p>{props.data ? props.data.paragraph : "Loading"}</p>
+                <a
+                  href="#about"
+                  className="btn btn-custom btn-lg page-scroll"
+                >
+                  Learn More
+                </a>{" "}
+              </div>
             </div>
-        );
-    }
-}
-
-export default Header;
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};

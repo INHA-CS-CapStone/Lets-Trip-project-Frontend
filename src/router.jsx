@@ -1,6 +1,5 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Menu from './components/mainpage/menu';
-import Main from './components/mainpage/main';
 import Result from './components/recommend/result';
 import Type from './components/recommend/type';
 import Search from './components/recommend/search';
@@ -10,10 +9,9 @@ function Router() {
 
   return (
     <div>
-      <BrowserRouter>
-        <Menu></Menu>
+     <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Main />}></Route>
+          <Route path="/" element={<Menu />}></Route>
           <Route path="/result" element={<Result/>}></Route>
           <Route path="/type" element={<Type />}></Route>
           <Route path="/hashtag" element={<Hashtag />}></Route>
