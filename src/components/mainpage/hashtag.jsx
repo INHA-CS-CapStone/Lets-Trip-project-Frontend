@@ -46,7 +46,7 @@ function Hashtag() {
             >
               {tag}
             </button>
-            {(index + 1) % 5 === 0 && <br />} {/* Add a line break after every 5 tags */}
+            {(index + 1) % 5 === 0 && <br />}
           </React.Fragment>
         ))}
       </div>
