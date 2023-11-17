@@ -7,17 +7,16 @@ import Search from './components/recommend/search';
 import Hashtag from './components/recommend/hashtag';
 
 function Router() {
-
   return (
     <div>
       <BrowserRouter>
         <Menu></Menu>
         <Routes>
           <Route path="/" element={<Main />}></Route>
-          <Route path="/result" element={<Result/>}></Route>
           <Route path="/type" element={<Type />}></Route>
           <Route path="/hashtag" element={<Hashtag />}></Route>
           <Route path="/search" element={<Search />}></Route>
+          <Route path="/result" element={<Result />} />
         </Routes>
       </BrowserRouter>
     </div>
