@@ -15,19 +15,30 @@ function Restaurant() {
   }, [x, y]);
 
   return (
-    <div className="restaurant">
-        <div className="button-container">
-        <Link className="button" to={`/result/?x=${x}&y=${y}`}>관광지</Link>
-      </div>
-      {names.length > 0 ? (
-        names.map((name, index) => (
-          <div key={index}>
-            <h2>{name}</h2>
-          </div>
-        ))
-      ) : (
-        <div className="loader"></div>
-      )}
+    <div className="list_wrap">
+        <div className="selecting">
+            <div className="button-container">
+                <ul>
+                    <li>
+                        <Link className="button" to={`/result/?x=${x}&y=${y}`}>관광지</Link>
+                    </li>
+                    <li>
+                        <Link className="button" to={`/restaurant/?x=${x}&y=${y}`}>음식점</Link>  
+                    </li>
+                </ul>
+            </div>
+            {names.length > 0 ? (
+                <ul className="list">
+                    {names.map((name, index) => (
+                    <li key={index}>
+                        <p>{name}</p>
+                    </li>
+                    ))}
+                </ul>
+            ) : (
+                <div className="loader"></div>
+            )}
+        </div>
     </div>
   );
 }
