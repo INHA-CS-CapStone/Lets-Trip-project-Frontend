@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
+import './result.css';
 
 function Result() {
   const [places, setPlaces] = useState([]);
@@ -16,7 +17,10 @@ function Result() {
 
   return (
     <div className="selecting">
-        {places.length > 0 ? (
+      <div className="button-container">
+        <Link className="button" to={`/restaurant/?x=${x}&y=${y}`}>음식점</Link>
+      </div>
+      {places.length > 0 ? (
         places.map((place, index) => (
           <div key={index}>
             <h2>{place.name}</h2>
@@ -26,7 +30,7 @@ function Result() {
           </div>
         ))
       ) : (
-        <h3>Loading...</h3>
+        <div className="loader"></div>
       )}
     </div>
   );
