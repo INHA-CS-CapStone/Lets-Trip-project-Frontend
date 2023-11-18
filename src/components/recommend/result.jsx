@@ -19,8 +19,7 @@ function PlaceList({ x, y, onPlaceSelect }) {
             <li key={index} className="place" onClick={() => onPlaceSelect(place)}>
               <p>{place.name}</p>
               Rating: {place.rating}<br/>
-              Review Count: {place.review_count}<br/>
-              Type: {place.type}
+              Type: {place.type}<br/>
             </li>
           ))}
         </ul>
