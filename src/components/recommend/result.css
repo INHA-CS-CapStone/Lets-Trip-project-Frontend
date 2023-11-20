@@ -33,6 +33,7 @@
 }
 
 .list_wrap {
+    background-color: #fff;
     position: fixed;
     left: 0;
     top: 80px;

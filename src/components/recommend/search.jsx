@@ -125,7 +125,7 @@ const Search = () => {
 
       if (isConfirmed) {
         console.log(`${places.place_name}가 선택되었습니다.`);
-        navigate(`/result?type=place&x=${places.x}&y=${places.y}`);
+        navigate(`/result?x=${places.x}&y=${places.y}`);
       } else {
         console.log("장소 선택이 취소되었습니다.");
       }
