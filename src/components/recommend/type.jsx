@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import './type.css';
+import "./type.css";
 
 function Type() {
   const [selectedTypes, setSelectedTypes] = useState([]);
@@ -8,30 +8,31 @@ function Type() {
 
   const handleTypeClick = (type) => {
     if (selectedTypes.includes(type)) {
-      setSelectedTypes(selectedTypes.filter(item => item !== type));
+      setSelectedTypes(selectedTypes.filter((item) => item !== type));
     } else if (selectedTypes.length < 2) {
       setSelectedTypes([...selectedTypes, type]);
     }
-  }
+  };
 
   const handleNextClick = () => {
     if (selectedTypes.length < 1) {
-      alert('선호하는 관광타입을 선택해 주세요.');
+      alert("선호하는 관광타입을 선택해 주세요.");
     } else {
-      navigate('/hashtag', { state: { selectedTypes } });
+      navigate("/hashtag", { state: { selectedTypes } });
     }
-  }
+  };
 
-  const tourismTypes = ['자연', '역사', '문화', '쇼핑', '레포츠'];
+  const tourismTypes = ["자연", "역사", "문화", "쇼핑", "레포츠"];
 
   return (
-    <div className="selecting">
+    <div className="type_wrap">
       <h1>선호하는 관광타입을 선택해 주세요!</h1>
       <p>최대 2개까지 선택 가능합니다.</p>
-      {tourismTypes.map(type => (
+      <br/>
+      {tourismTypes.map((type) => (
         <button
           key={type}
-          className={selectedTypes.includes(type) ? 'selected' : ''}
+          className={selectedTypes.includes(type) ? "selected" : ""}
           onClick={() => handleTypeClick(type)}
         >
           {type}
@@ -44,4 +45,4 @@ function Type() {
   );
 }
 
-export default Type
+export default Type;

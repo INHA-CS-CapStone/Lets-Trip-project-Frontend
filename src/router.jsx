@@ -1,10 +1,11 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Menu from './components/mainpage/menu';
-import Main from './components/mainpage/main';
-import Result from './components/recommend/result';
-import Type from './components/recommend/type';
-import Search from './components/recommend/search';
-import Hashtag from './components/recommend/hashtag';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Menu from "./components/mainpage/menu";
+import Main from "./components/mainpage/main";
+import Result from "./components/recommend/result";
+import Type from "./components/recommend/type";
+import Search from "./components/recommend/search";
+import Hashtag from "./components/recommend/hashtag";
+import Contact from "./components/mainpage/contact";
 
 function Router() {
   return (
@@ -17,6 +18,7 @@ function Router() {
           <Route path="/hashtag" element={<Hashtag />}></Route>
           <Route path="/search" element={<Search />}></Route>
           <Route path="/result" element={<Result />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </BrowserRouter>
     </div>
