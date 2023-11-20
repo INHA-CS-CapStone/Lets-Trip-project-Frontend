@@ -1,0 +1,39 @@
+.explanation {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-title,
+.sub-title {
+  font-size: 36px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.main-text,
+.sub-text {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.contact-container h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333; 
+}
+
+.contact-container strong {
+  color: #e17055; 
+}
+
+.contact-container p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: #555;
+}
