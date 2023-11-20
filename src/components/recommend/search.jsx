@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './search.css';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./search.css";
 
 const MARKER_IMAGE_URL =
-  'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png';
+  "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png";
 
 const { kakao } = window;
 
@@ -12,14 +12,14 @@ const Search = () => {
   const [ps, setPs] = useState();
   const [infoWindow, setInfoWindow] = useState();
   const [markers, setMarkers] = useState([]);
-  const [searchKeyword, setSearchKeyword] = useState('');
+  const [searchKeyword, setSearchKeyword] = useState("");
   const navigate = useNavigate();
 
   const searchPlaces = (event) => {
     event.preventDefault();
 
-    if (!searchKeyword.replace(/^\s+|\s+$/g, '')) {
-      alert('숙소 이름을 입력해주세요.');
+    if (!searchKeyword.replace(/^\s+|\s+$/g, "")) {
+      alert("숙소 이름을 입력해주세요.");
       return;
     }
 
@@ -36,11 +36,11 @@ const Search = () => {
         break;
 
       case ZERO_RESULT:
-        alert('검색 결과가 존재하지 않습니다.');
+        alert("검색 결과가 존재하지 않습니다.");
         break;
 
       case ERROR:
-        alert('검색 결과 중 오류가 발생했습니다.');
+        alert("검색 결과 중 오류가 발생했습니다.");
         break;
 
       default:
@@ -49,8 +49,8 @@ const Search = () => {
   };
 
   const displayPlaces = (places) => {
-    const placesListElement = document.getElementById('placesList');
-    const menuElement = document.getElementById('menu_wrap');
+    const placesListElement = document.getElementById("placesList");
+    const menuElement = document.getElementById("menu_wrap");
     const fragment = document.createDocumentFragment();
     const bounds = new kakao.maps.LatLngBounds();
 
@@ -65,11 +65,11 @@ const Search = () => {
       bounds.extend(placePosition);
 
       (function (marker, title) {
-        kakao.maps.event.addListener(marker, 'mouseover', () => {
+        kakao.maps.event.addListener(marker, "mouseover", () => {
           displayInfoWindow(marker, title);
         });
 
-        kakao.maps.event.addListener(marker, 'mouseout', () => {
+        kakao.maps.event.addListener(marker, "mouseout", () => {
           infoWindow.close();
         });
 
@@ -92,40 +92,42 @@ const Search = () => {
   };
 
   const getListItem = (index, places) => {
-    const itemElement = document.createElement('li');
+    const itemElement = document.createElement("li");
     let itemStr =
       '<span class="markerbg marker_' +
       (index + 1) +
       '"></span>' +
       '<div class="info">' +
-      '<h5>' +
+      "<h5>" +
       places.place_name +
-      '</h5>';
+      "</h5>";
 
     if (places.road_address_name) {
       itemStr +=
-        '<span>' +
+        "<span>" +
         places.road_address_name +
-        '</span>' +
+        "</span>" +
         '<span class="jibun gray">' +
         places.address_name +
-        '</span>';
+        "</span>";
     } else {
-      itemStr += '<span>' + places.address_name + '</span>';
+      itemStr += "<span>" + places.address_name + "</span>";
     }
 
-    itemStr += '<span class="tel">' + places.phone + '</span>' + '</div>';
+    itemStr += '<span class="tel">' + places.phone + "</span>" + "</div>";
     itemElement.innerHTML = itemStr;
-    itemElement.className = 'item';
+    itemElement.className = "item";
 
     itemElement.onclick = () => {
-      const isConfirmed = window.confirm(`선택하신 숙소가 [${places.place_name}]이(가) 맞나요?`);
+      const isConfirmed = window.confirm(
+        `선택하신 숙소가 [${places.place_name}]이(가) 맞나요?`
+      );
 
       if (isConfirmed) {
         console.log(`${places.place_name}가 선택되었습니다.`);
         navigate(`/result?type=place&x=${places.x}&y=${places.y}`);
       } else {
-        console.log('장소 선택이 취소되었습니다.');
+        console.log("장소 선택이 취소되었습니다.");
       }
     };
 
@@ -139,7 +141,11 @@ const Search = () => {
       spriteOrigin: new kakao.maps.Point(0, idx * 46 + 10),
       offset: new kakao.maps.Point(13, 37),
     };
-    const markerImage = new kakao.maps.MarkerImage(MARKER_IMAGE_URL, imageSize, imgOptions);
+    const markerImage = new kakao.maps.MarkerImage(
+      MARKER_IMAGE_URL,
+      imageSize,
+      imgOptions
+    );
     const marker = new kakao.maps.Marker({
       position: position,
       image: markerImage,
@@ -157,7 +163,7 @@ const Search = () => {
   };
 
   const displayPagination = (pagination) => {
-    const paginationElement = document.getElementById('pagination');
+    const paginationElement = document.getElementById("pagination");
     const fragment = document.createDocumentFragment();
 
     while (paginationElement.hasChildNodes()) {
@@ -165,13 +171,13 @@ const Search = () => {
     }
 
     for (let i = 1; i <= pagination.last; i++) {
-      const aElement = document.createElement('a');
+      const aElement = document.createElement("a");
 
-      aElement.href = '#';
+      aElement.href = "#";
       aElement.innerHTML = i;
 
       if (i === pagination.current) {
-        aElement.className = 'on';
+        aElement.className = "on";
       } else {
         aElement.onclick = (function (i) {
           return function () {
@@ -186,7 +192,7 @@ const Search = () => {
   };
 
   const displayInfoWindow = (marker, title) => {
-    const content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+    const content = '<div style="padding:5px;z-index:1;">' + title + "</div>";
 
     infoWindow.setContent(content);
     infoWindow.open(map, marker);
@@ -203,7 +209,7 @@ const Search = () => {
   };
 
   useEffect(() => {
-    const mapContainerElement = document.getElementById('map');
+    const mapContainerElement = document.getElementById("map");
     const mapOption = {
       center: new kakao.maps.LatLng(33.450701, 126.570667),
       level: 3,
@@ -219,27 +225,31 @@ const Search = () => {
 
   return (
     <div className="map_wrap">
-      <div id="map" style={{ width: '1000px', height: '500px', overflow: 'hidden' }} />
-        <div id="menu_wrap" className="bg_white">
-          <div className="option">
-            <div>
-              <form onSubmit={searchPlaces}>
-                숙소 :{' '}
-                <input
-                  type="text"
-                  id="keyword"
-                  size="10"
-                  value={searchKeyword}
-                  onChange={handleSearchInputChange}
-                />
-                <button type="submit">검색하기</button>
-              </form>
-            </div>
+      <div
+        id="map"
+        style={{ width: "1000px", height: "500px", overflow: "hidden" }}
+      />
+      <div id="menu_wrap" className="bg_white">
+        <div className="option">
+          <div>
+            <form onSubmit={searchPlaces}>
+              숙소 :{" "}
+              <input
+                type="text"
+                id="keyword"
+                size="10"
+                value={searchKeyword}
+                onChange={handleSearchInputChange}
+              />
+              <button type="submit">검색하기</button>
+            </form>
           </div>
+        </div>
         <hr />
         <ul id="placesList"></ul>
         <div id="pagination"></div>
       </div>
+      <div className="map_wrap_box"></div>
     </div>
   );
 };

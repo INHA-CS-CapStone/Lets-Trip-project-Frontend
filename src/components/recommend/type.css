@@ -1,21 +1,59 @@
 .Type {
-    text-align: center;
-    margin-top: 50px;
-  }
+  text-align: center;
+  margin-top: 50px;
+}
+
+.selecting > button {
+  width: 100px;
+}
+
+.type_wrap button {
+  font-size: 18px;
+  border: 0;
+  margin: 7px;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  background-color: rgb(247, 247, 247);
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button-container button {
+  font-size: 15px;
+  border: 0;
+  margin-top: 50px;
+  height: 50px;
+  width: 90px;
+  border-radius: 5px;
+  color: #fff;
+  background: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.type_wrap button:hover {
+  cursor: pointer;
   
-  .selecting > button {
-    width: 100px;
-  }
-  
-  .selected {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  button:hover {
-    cursor: pointer;
-  }
-  
-  button:active {
-    transform: scale(0.98);
-  }
+}
+
+.type_wrap button:active {
+  transform: scale(0.98);
+}
+
+.type_wrap .selected {
+  background-color: rgb(86, 127, 242);
+  color: white;
+}
+
+.type_wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 8%;
+  padding: 60px;
+  margin-bottom: 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+

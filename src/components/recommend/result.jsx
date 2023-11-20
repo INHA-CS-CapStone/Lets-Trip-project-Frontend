@@ -119,7 +119,7 @@ function Result() {
   };
 
   return (
-      <div id="map" style={{width:'1237px', height:'calc(100vh - 80px)', position:'fixed', right:'0px', top:'80px', overflow:'hidden', zIndex:'-1'}}>
+      <div id="map" style={{width:'84%', height:'calc(100vh - 80px)', position:'fixed', right:'0px', top:'80px', overflow:'hidden'}}>
       <div className="list_wrap">
         <div className="selecting">
           <div className="result-button-container">

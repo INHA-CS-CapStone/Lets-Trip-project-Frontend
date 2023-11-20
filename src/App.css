@@ -1,11 +1,9 @@
-body { 
-  padding-top: 150px;
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  padding-top: 100px;
   display: flex;
   justify-content: center;
-}
-
-.explanation {
-  text-align: center;
+  background-color: rgb(162, 198, 254);
 }
 
 .selecting {
@@ -13,33 +11,7 @@ body {
 }
 
 .selecting button {
-  margin: 5px; 
-}
-
-button {
-  font-size: 1em;
-  margin: 10px;
-  padding: 10px 20px;
-  border: 2px solid #3498db;
-  border-radius: 5px;
-  background-color: #3498db;
-  color: #fff;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.selected {
-  background-color: #4caf50;
-  border-color: #4caf50;
-}
-
-button:hover {
-  cursor: pointer;
-  background-color: #2980b9;
-  color: #fff;
-}
-
-button:active {
-  transform: scale(0.98);
+  margin: 5px;
 }
 
 .loader {
@@ -48,17 +20,25 @@ button:active {
   border-top: 10px solid #3498db;
   width: 50px;
   height: 50px;
-  -webkit-animation: spin 2s linear infinite; 
+  -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
   margin: auto;
 }
 
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
