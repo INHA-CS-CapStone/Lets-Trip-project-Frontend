@@ -3,13 +3,40 @@ import axios from 'axios';
 import { useLocation, Link } from 'react-router-dom';
 import './result.css';
 
+const { kakao } = window;
+
 function PlaceList({ x, y, onPlaceSelect }) {
   const [places, setPlaces] = useState([]);
 
   useEffect(() => {
     axios.get(`http://localhost:8000/place/?x=${x}&y=${y}`)
       .then(response => setPlaces(response.data));
-  }, [x, y]);
+
+      var mapContainer = document.getElementById('map'), 
+      mapOption = {
+          center: new kakao.maps.LatLng(37.566826, 126.9786567), 
+          level: 3 
+      };      
+      var map = new kakao.maps.Map(mapContainer, mapOption); 
+      var bounds = new kakao.maps.LatLngBounds();
+  
+      places.map((place, index) => {
+        var position = new kakao.maps.LatLng(place.y, place.x);
+        var marker = new kakao.maps.Marker({
+          map: map,
+          position: position
+        });
+        var i = index + 1;
+        var content = '<div class ="label"><span class="left"></span><span class="center">'+ i +'</span><span class="right"></span></div>';
+        var customOverlay = new kakao.maps.CustomOverlay({
+          position: position,
+          content: content   
+        });
+        customOverlay.setMap(map);
+        bounds.extend(position);
+      });
+      map.setBounds(bounds);
+  }, [x, y, places]);
 
   return (
     <div>
@@ -17,7 +44,7 @@ function PlaceList({ x, y, onPlaceSelect }) {
         <ul className="list">
           {places.map((place, index) => (
             <li key={index} className="place" onClick={() => onPlaceSelect(place)}>
-              <p>{place.name}</p>
+              <p>{index + 1}. {place.name}</p>
               Rating: {place.rating}<br/>
               Type: {place.type}<br/>
             </li>
@@ -92,7 +119,7 @@ function Result() {
   };
 
   return (
-    <div>
+      <div id="map" style={{width:'1237px', height:'calc(100vh - 80px)', position:'fixed', right:'0px', top:'80px', overflow:'hidden', zIndex:'-1'}}>
       <div className="list_wrap">
         <div className="selecting">
           <div className="result-button-container">
