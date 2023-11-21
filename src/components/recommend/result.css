@@ -36,7 +36,7 @@
     background-color: #fff;
     position: fixed;
     left: 0;
-    top: 80px;
+    top: 85px;
     border: 1px solid #e5e6e8;
     width: 16%;
     height: calc(100vh - 80px);
@@ -45,7 +45,7 @@
 .result-button-container {
     display: flex;
     justify-content: center;
-    padding: 30px;
+    padding: 20px;
     border-bottom: 1px solid #e5e6e8;
 }
   
