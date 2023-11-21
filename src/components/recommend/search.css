@@ -12,12 +12,12 @@
   text-decoration: none;
 }
 .map_wrap {
-    margin-top: 3%;
+    margin-top: 6%;
     position: relative;
     height: 500px;
     border-style: solid;
     border-color: #fff;
-    border-width: 60px 30px;
+    border-width: 40px 30px;
     border-radius: 8px;
 }
 #menu_wrap {

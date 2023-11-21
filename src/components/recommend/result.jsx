@@ -5,38 +5,43 @@ import './result.css';
 
 const { kakao } = window;
 
+function createMap(x, y, places) {
+  var mapContainer = document.getElementById('map'), 
+  mapOption = {
+      center: new kakao.maps.LatLng(37.566826, 126.9786567), 
+      level: 3
+  };      
+  var map = new kakao.maps.Map(mapContainer, mapOption); 
+  var bounds = new kakao.maps.LatLngBounds();
+
+  places.map((place, index) => {
+    var position = new kakao.maps.LatLng(place.y, place.x);
+    var marker = new kakao.maps.Marker({
+      map: map,
+      position: position
+    });
+    var i = index + 1;
+    var content = '<div class ="label"><span class="left"></span><span class="center">'+ i +'</span><span class="right"></span></div>';
+    var customOverlay = new kakao.maps.CustomOverlay({
+      position: position,
+      content: content   
+    });
+    customOverlay.setMap(map);
+    bounds.extend(position);
+  });
+  map.setBounds(bounds);
+}
+
 function PlaceList({ x, y, onPlaceSelect }) {
   const [places, setPlaces] = useState([]);
 
   useEffect(() => {
     axios.get(`http://localhost:8000/place/?x=${x}&y=${y}`)
-      .then(response => setPlaces(response.data));
-
-      var mapContainer = document.getElementById('map'), 
-      mapOption = {
-          center: new kakao.maps.LatLng(37.566826, 126.9786567), 
-          level: 3 
-      };      
-      var map = new kakao.maps.Map(mapContainer, mapOption); 
-      var bounds = new kakao.maps.LatLngBounds();
-  
-      places.map((place, index) => {
-        var position = new kakao.maps.LatLng(place.y, place.x);
-        var marker = new kakao.maps.Marker({
-          map: map,
-          position: position
-        });
-        var i = index + 1;
-        var content = '<div class ="label"><span class="left"></span><span class="center">'+ i +'</span><span class="right"></span></div>';
-        var customOverlay = new kakao.maps.CustomOverlay({
-          position: position,
-          content: content   
-        });
-        customOverlay.setMap(map);
-        bounds.extend(position);
+      .then(response => {
+        setPlaces(response.data);
+        createMap(x, y, response.data);
       });
-      map.setBounds(bounds);
-  }, [x, y, places]);
+  }, [x, y]);
 
   return (
     <div>
@@ -58,20 +63,21 @@ function PlaceList({ x, y, onPlaceSelect }) {
 }
 
 function RestaurantList({ x, y, onRestaurantSelect }) {
-  const [names, setNames] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
     axios.get(`http://localhost:8000/restaurant/?x=${x}&y=${y}`)
-      .then(response => setNames(response.data.names));
+      .then(response => setRestaurants(response.data.result));
   }, [x, y]);
 
   return (
     <div>
-      {names.length > 0 ? (
+      {restaurants.length > 0 ? (
         <ul className="list">
-          {names.map((name, index) => (
+          {restaurants.map(([name, type], index) => (
             <li key={index} onClick={() => onRestaurantSelect(name)}>
-              <p>{name}</p>
+              <h3>{name}</h3>
+              <p>{type}</p>
             </li>
           ))}
         </ul>
@@ -81,6 +87,7 @@ function RestaurantList({ x, y, onRestaurantSelect }) {
     </div>
   );
 }
+
 
 function Planner({ items, onItemRemove }) {
   return (
