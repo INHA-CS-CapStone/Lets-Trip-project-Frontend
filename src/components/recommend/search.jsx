@@ -124,10 +124,7 @@ const Search = () => {
       );
 
       if (isConfirmed) {
-        console.log(`${places.place_name}가 선택되었습니다.`);
         navigate(`/result?type=place&x=${places.x}&y=${places.y}`);
-      } else {
-        console.log("장소 선택이 취소되었습니다.");
       }
     };
 
@@ -233,15 +230,22 @@ const Search = () => {
         <div className="option">
           <div>
             <form onSubmit={searchPlaces}>
-              숙소 :{" "}
+              {""}
               <input
                 type="text"
                 id="keyword"
                 size="10"
                 value={searchKeyword}
                 onChange={handleSearchInputChange}
+                placeholder="숙소를 입력해주세요!"
+                style={{ 
+                  width: "130px", 
+                  borderRadius: "10px", 
+                  borderWidth: "1px",
+                  padding: "0 10px"
+                }}
               />
-              <button type="submit">검색하기</button>
+              <button type="submit">검색</button>
             </form>
           </div>
         </div>
