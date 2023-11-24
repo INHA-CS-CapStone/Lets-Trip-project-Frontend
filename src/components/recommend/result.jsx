@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import axios from 'axios';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import './result.css';
 
 const { kakao } = window;
@@ -8,6 +8,7 @@ const { kakao } = window;
 function PlaceList({ x, y, onPlaceSelect, createMap }) {
   const [places, setPlaces] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -28,10 +29,12 @@ function PlaceList({ x, y, onPlaceSelect, createMap }) {
       ) : (
         <ul className="list">
           {places.map((place, index) => (
-            <li key={index} className="place" onClick={() => onPlaceSelect(place)}>
+            <li key={index} className="place">
               <p>{index + 1}. {place.name}</p>
               Rating: {place.rating}<br/>
               Type: {place.type}<br/>
+              <button onClick={() => onPlaceSelect(place)}>플래너 추가</button>
+              <button onClick={() => navigate(`/detail?content_id=${place.content_id}`)}>상세페이지</button>
             </li>
           ))}
         </ul>
