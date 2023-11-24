@@ -68,14 +68,15 @@ function PlaceList({ x, y, onPlaceSelect, createMap, onDetailOpen }) {
         <ul className="list">
           {places.map((place, index) => (
             <li key={index} className="place">
-              <div className="info">
-                {index + 1}. {place.name}<br/>
-                Rating: {place.rating}<br/>
-                Type: {place.type}<br/>
+              <div className="num">{index + 1}</div>
+              <img className="list_image" src={place.small_image} alt="" />
+              <div className="place_info">
+                {place.name}<br/>
+                ⭐ {place.rating} <br/>
               </div>
               <div className="place_button_wrap">
-                <button onClick={() => handleDetailOpen(place)}>ⓘ</button>
-                <button onClick={() => onPlaceSelect(place)}>+</button>
+                <button className="select_button" onClick={() => handleDetailOpen(place)}>ⓘ</button>
+                <button className="select_button" onClick={() => onPlaceSelect(place)}>+</button>
               </div>
             </li>
           ))}
@@ -107,9 +108,14 @@ function RestaurantList({ x, y, onRestaurantSelect }) {
       ) : (
         <ul className="list">
           {restaurants.map(([name, type], index) => (
-            <li key={index} onClick={() => onRestaurantSelect(name)}>
+            <li key={index} className="res">
+              <div className="res_info">
               <h3>{name}</h3>
               <p>{type}</p>
+              </div>
+              <div className="res_button_wrap">
+                <button className="select_button" onClick={() => onRestaurantSelect(name)}>+</button>
+              </div>
             </li>
           ))}
         </ul>
@@ -211,18 +217,13 @@ function Result() {
   }, [center]);
 
   return (
-      <div id="map" style={{width:'84%', height:'calc(100vh - 80px)', position:'fixed', right:'0px', top:'80px', overflow:'hidden'}}>
+      <div id="map" style={{width:'81%', height:'calc(100vh - 80px)', position:'fixed', right:'0px', top:'80px', overflow:'hidden'}}>
       <div className="list_wrap">
         <div className="selecting">
           <div className="result-button-container">
-            <ul>
-            <li>
               <Link className="button" to={placeLink}>관광지</Link>
-            </li>
-            <li>
+              |
               <Link className="button" to={restaurantLink}>음식점</Link>  
-            </li>
-            </ul>
           </div>
           {type === 'place'
             ? <PlaceList x={y} y={x} onPlaceSelect={handlePlaceSelect} createMap={createMap} onDetailOpen={handleDetailOpen} />

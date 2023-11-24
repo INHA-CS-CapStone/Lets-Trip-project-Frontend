@@ -29,6 +29,7 @@ function Type() {
       <h1>선호하는 관광타입을 선택해 주세요!</h1>
       <p>최대 2개까지 선택 가능합니다.</p>
       <br/>
+      <br/>
       {tourismTypes.map((type) => (
         <button
           key={type}

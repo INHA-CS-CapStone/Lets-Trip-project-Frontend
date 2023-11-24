@@ -38,45 +38,74 @@
     left: 0;
     top: 85px;
     border: 1px solid #e5e6e8;
-    width: 16%;
+    width: 19%;
     height: calc(100vh - 80px);
 }
 
 .result-button-container {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    border-bottom: 1px solid #e5e6e8;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #dbdbdb;
+  border-bottom: 1px solid #e5e6e8;
+  border-right: 1px solid #e5e6e8;
 }
-  
+
 .result-button-container .button {
-    background-color: #fff;
-    border: 1px solid #adadad;
-    color: #888;
-    padding: 15px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px;
-    cursor: pointer;
+  background-color: #fff;
+  color: #888;
+  text-decoration: none;
+  display: inline-block;
+  padding: 20px 0;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 200;
+  cursor: pointer;
+}
+
+.result-button-container .button:hover {
+  font-weight: bold;
 }
 
 .list {
-  height: calc(100vh - 202px);
+  height: calc(100vh - 152px);
   overflow: auto;
   flex-direction: column; 
   align-content: start; 
   overflow-y: scroll;
 }
 
+.list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: #f5f5f5; 
+  border-radius: 10px; 
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 10px;
+}
+
+.list li {
+  border-bottom: 1px solid #e5e6e6e8;
+}
+
 .list li.place {
   width: 100%;
-  border-bottom: 1px solid #e5e6e6e8;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 0;
+}
+
+.list li.res {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .loader_wrap {
@@ -121,8 +150,18 @@
     margin-left: 15px;
     width: 100%;
   }
-  .info {
+
+  .place_info {
+    width: 40%;
+  }
+
+  .res_info {
+    margin-left: 7%;
     width: 70%;
+  }
+
+  .res_button_wrap {
+    margin-right: 5%;
   }
   
   .planner button {
@@ -145,10 +184,10 @@
   }
 
 .place_button_wrap {
-  width: 30%;
+  margin-right: 5px;
 }
 
-.place button {
+.select_button {
     border: 1px solid #888;
     border-radius: 20%;
     background-color: #fff;
@@ -160,6 +199,7 @@
     line-height: 18px;
     text-align: center;
     padding: 0;
+    padding-bottom: 1px;
 }
 
 .place button:hover {
@@ -173,7 +213,7 @@
   transform: translate(-50%, -50%); 
   z-index: 10;  
   background: white; 
-  max-width: 650px;
+  max-width: 600px;
   padding-bottom: 40px;
   border-radius: 8px;
   text-align: center;
@@ -193,7 +233,7 @@
 }
 
 .popup_image {
-  margin: 4% 15%;
+  margin: 3% 10%;
   width: 70%;
   height: auto;
   max-height: 300px;
@@ -201,7 +241,7 @@
 }
 
 .popup_text {
-  margin: 4% 10%;
+  margin: 4% 6%;
   font-family: "Noto Sans KR"; 
   font-size: 15px;
   line-height: 1.5; 
@@ -233,11 +273,22 @@
 }
 
 .popup::-webkit-scrollbar-thumb {
-  background: #afafaf;
+  background: #c5c5c5;
   border-radius: 10px;
 }
 
 .close_button {
   margin-right: 20px;
   text-align: right;
+}
+
+.list_image {
+  border-radius: 50%; 
+  width: 80px;
+  height: 80px; 
+  object-fit: cover;
+}
+.num {
+  margin: 18px;
+  font-size: 20px;
 }
