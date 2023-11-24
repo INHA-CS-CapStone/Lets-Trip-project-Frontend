@@ -77,16 +77,6 @@ function Main() {
       <br />
       <br />
 
-      <h2 className="sub-title">여행에 대한 의견을 공유해주세요!</h2>
-      <p className="sub-text">
-        저희에게 궁금한점이 있거나 프로젝트에 대한 의견이 있나요? <br />
-        아래 버튼을 클릭하여 의견을 공유해주세요! <br />
-        당신의 소중한 의견이 더 나은 여행을 만들어낼 것입니다.
-      </p>
-
-      <a href={googleFormLink} target="_blank" rel="noopener noreferrer">
-        <button className="special-button">의견 공유하기</button>
-      </a>
     </div>
   );
 }

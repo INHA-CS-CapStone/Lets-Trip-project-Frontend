@@ -5,11 +5,12 @@
 
 .hashtag_wrap button {
   font-size: 16px;
+  font-weight: 400;
   border: 0;
   margin: 7px;
-  height: 50px;
+  height: 55px;
   width: 125px;
-  border-radius: 10px;
+  border-radius: 30px;
   background-color: rgb(247, 247, 247);
   color: #333;
   transition: background-color 0.3s, color 0.3s;
@@ -59,11 +60,11 @@ ul {
 .hashtag_wrap {
   max-width: 800px;
   margin: 0 auto;
-  margin-top: 8%;
+  margin-top: 7%;
   padding: 60px;
   margin-bottom: 40px;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
