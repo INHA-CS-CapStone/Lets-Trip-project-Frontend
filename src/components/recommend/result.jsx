@@ -1,14 +1,48 @@
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import axios from 'axios';
-import { useLocation, Link, useNavigate } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import './result.css';
 
 const { kakao } = window;
 
-function PlaceList({ x, y, onPlaceSelect, createMap }) {
+function Detail({ content_id, onClose }) {
+  const [image, setImage] = useState();
+  const [overview, setOverview] = useState();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get(`http://localhost:8000/place/${content_id}/`)
+      .then(response => {
+        const data = response.data;
+        setImage(data[0]);
+        setOverview(data[1]);
+        setLoading(false);
+      });
+  }, [content_id]);
+
+  return (
+    <>
+      <div className="popup_backdrop" onClick={onClose}></div>
+      {loading ? (  
+        <div></div>
+        ) : (
+          <>
+            <div className="popup">
+              <div className="close_button">
+                <button onClick={onClose}>x</button>
+              </div>
+              <img className="popup_image" src={image} alt="" />
+              <pre className="popup_text"style={{ whiteSpace: 'pre-wrap' }} dangerouslySetInnerHTML={{ __html: overview }}></pre>
+            </div>
+          </>
+        )}
+    </>
+  );
+}
+
+function PlaceList({ x, y, onPlaceSelect, createMap, onDetailOpen }) {
   const [places, setPlaces] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -20,6 +54,10 @@ function PlaceList({ x, y, onPlaceSelect, createMap }) {
       });
   }, [x, y, createMap]);
 
+  const handleDetailOpen = (place) => {
+    onDetailOpen(place);
+  };
+
   return (
     <div >
       {isLoading ? (
@@ -30,11 +68,15 @@ function PlaceList({ x, y, onPlaceSelect, createMap }) {
         <ul className="list">
           {places.map((place, index) => (
             <li key={index} className="place">
-              <p>{index + 1}. {place.name}</p>
-              Rating: {place.rating}<br/>
-              Type: {place.type}<br/>
-              <button onClick={() => onPlaceSelect(place)}>플래너 추가</button>
-              <button onClick={() => navigate(`/detail?content_id=${place.content_id}`)}>상세페이지</button>
+              <div className="info">
+                {index + 1}. {place.name}<br/>
+                Rating: {place.rating}<br/>
+                Type: {place.type}<br/>
+              </div>
+              <div className="place_button_wrap">
+                <button onClick={() => handleDetailOpen(place)}>ⓘ</button>
+                <button onClick={() => onPlaceSelect(place)}>+</button>
+              </div>
             </li>
           ))}
         </ul>
@@ -101,6 +143,15 @@ function Result() {
   const [plannerItems, setPlannerItems] = useState([]);
   const [map, setMap] = useState(null);
   const [center, setCenter] = useState({ x: x, y: y });
+  const [selectedPlaceId, setSelectedPlaceId] = useState(null);
+
+  const handleDetailOpen = (place) => { 
+    setSelectedPlaceId(place.content_id);
+  };
+  
+  const handleDetailClose = () => {
+    setSelectedPlaceId(null);
+  };
 
   const handlePlaceSelect = place => {
     setPlannerItems(currentItems => [...currentItems, place]);
@@ -174,13 +225,14 @@ function Result() {
             </ul>
           </div>
           {type === 'place'
-      ? <PlaceList x={y} y={x} onPlaceSelect={handlePlaceSelect} createMap={createMap} />
-      : <RestaurantList x={y} y={x} onRestaurantSelect={handleRestaurantSelect} />}
+            ? <PlaceList x={y} y={x} onPlaceSelect={handlePlaceSelect} createMap={createMap} onDetailOpen={handleDetailOpen} />
+            : <RestaurantList x={y} y={x} onRestaurantSelect={handleRestaurantSelect} />}
         </div>
       </div>
       <div className="planner">
         <Planner items={plannerItems} onItemRemove={handleItemRemove} />
       </div>
+      {selectedPlaceId && <Detail content_id={selectedPlaceId} onClose={handleDetailClose} />}
     </div>
   );
 }
