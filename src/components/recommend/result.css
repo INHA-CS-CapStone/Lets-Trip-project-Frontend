@@ -70,17 +70,13 @@
   overflow-y: scroll;
 }
 
-.list li {
+.list li.place {
   width: 100%;
   border-bottom: 1px solid #e5e6e6e8;
-}
-
-.list .place {
-  padding-bottom: 15px;
-}
-
-.list li:hover {
-    background-color: rgb(233, 233, 233);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
 }
 
 .loader_wrap {
@@ -125,6 +121,9 @@
     margin-left: 15px;
     width: 100%;
   }
+  .info {
+    width: 70%;
+  }
   
   .planner button {
     border: 1px solid #888;
@@ -144,3 +143,101 @@
   .planner button:hover {
     background-color:#e6e6e6;
   }
+
+.place_button_wrap {
+  width: 30%;
+}
+
+.place button {
+    border: 1px solid #888;
+    border-radius: 20%;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    color: #888;
+    width: 25px;
+    height: 25px;
+    line-height: 18px;
+    text-align: center;
+    padding: 0;
+}
+
+.place button:hover {
+  background-color:#e6e6e6;
+}
+
+.popup {
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  z-index: 10;  
+  background: white; 
+  max-width: 650px;
+  padding-bottom: 40px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.popup_backdrop {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;   
+  height: 100%; 
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 5; 
+}
+
+.popup_image {
+  margin: 4% 15%;
+  width: 70%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover; 
+}
+
+.popup_text {
+  margin: 4% 10%;
+  font-family: "Noto Sans KR"; 
+  font-size: 15px;
+  line-height: 1.5; 
+}
+
+.popup button {
+    border: 1px solid #888;
+    border-radius: 20%;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    color: #888;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+}
+
+.popup button:hover {
+  background-color:#e6e6e6;
+}
+
+.popup::-webkit-scrollbar {
+  width: 8px;
+}
+
+.popup::-webkit-scrollbar-track {
+  background: #f5f5f5; 
+  border-radius: 10px; 
+}
+
+.popup::-webkit-scrollbar-thumb {
+  background: #afafaf;
+  border-radius: 10px;
+}
+
+.close_button {
+  margin-right: 20px;
+  text-align: right;
+}

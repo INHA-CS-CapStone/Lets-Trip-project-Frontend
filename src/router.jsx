@@ -6,7 +6,6 @@ import Type from "./components/recommend/type";
 import Search from "./components/recommend/search";
 import Hashtag from "./components/recommend/hashtag";
 import Contact from "./components/mainpage/contact";
-import Detail from "./components/recommend/detail";
 
 function Router() {
   return (
@@ -20,7 +19,6 @@ function Router() {
           <Route path="/search" element={<Search />}></Route>
           <Route path="/result" element={<Result />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/detail" element={<Detail />} />
         </Routes>
       </BrowserRouter>
     </div>
