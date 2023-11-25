@@ -1,0 +1,85 @@
+.share-container {
+    max-width: 800px;
+    margin-top: 2%;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.share-container h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.share-container p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.planner-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #f9f9f9;
+}
+
+.share-planner {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    padding: 20px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e6e8;
+    background-color: #fff;
+    border-radius: 5%;
+    flex: 0 0 calc(25% - 9px);
+    margin: 15px; 
+  }
+  
+  .share-planner ul {
+    padding-top: 15px;
+    flex-wrap: wrap;
+    list-style: none;
+    flex-direction: column; 
+    align-content: start;
+  }
+  
+  .share-planner li {
+    color:#5e5e5e;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 32px;
+    font-size: 15px;
+  }
+
+  .share-planner p {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .share-planner button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 1px solid #888;
+    border-radius: 20%;
+    background-color: #fff;
+    cursor: pointer;
+    color: #888;
+    width: 17px;
+    height: 17px;
+    line-height: 18px;
+    text-align: center;
+    padding: 0;
+  }

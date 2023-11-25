@@ -1,7 +1,13 @@
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import React, { useRef,useEffect, useState, useMemo, useCallback } from 'react';
 import axios from 'axios';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import './result.css';
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSave } from '@fortawesome/free-regular-svg-icons';
+import smallImage from '../../assets/cityscape.jpg';
+import largeImage from '../../assets/skyscraper.webp';
 
 const { kakao } = window;
 
@@ -29,9 +35,9 @@ function Detail({ content_id, onClose }) {
           <>
             <div className="popup">
               <div className="close_button">
-                <button onClick={onClose}>x</button>
+                <button onClick={onClose}>×</button>
               </div>
-              <img className="popup_image" src={image} alt="" />
+              <img className="popup_image" src={image || largeImage} alt="" />
               <pre className="popup_text"style={{ whiteSpace: 'pre-wrap' }} dangerouslySetInnerHTML={{ __html: overview }}></pre>
             </div>
           </>
@@ -69,7 +75,7 @@ function PlaceList({ x, y, onPlaceSelect, createMap, onDetailOpen }) {
           {places.map((place, index) => (
             <li key={index} className="place">
               <div className="num">{index + 1}</div>
-              <img className="list_image" src={place.small_image} alt="" />
+              <img className="list_image" src={place.small_image || smallImage} alt="" />
               <div className="place_info">
                 {place.name}<br/>
                 ⭐ {place.rating} <br/>
@@ -127,18 +133,66 @@ function RestaurantList({ x, y, onRestaurantSelect }) {
 function Planner({ items, onItemRemove }) {
   return (
     <div>
-      <div className="planner_name">Planner</div>
-      <ul>
+      <ul className="planner_item">
         {items.map((item, index) => (
           <li key={index}>
             {item.name}
-            <button onClick={() => onItemRemove(index)}>x</button>
+            <button className="planner_item_button" onClick={() => onItemRemove(index)}>×</button>
           </li>
         ))}
       </ul>
     </div>
   );
 }
+
+function PlannerPopup({ items, onSave, onUpload, onClose }) {
+  const plannerRef = useRef();
+  const navigate = useNavigate();
+
+  const handleSave = () => {
+  domtoimage.toBlob(plannerRef.current)
+    .then((blob) => {
+      saveAs(blob, 'planner.jpg');
+      onSave();
+    });
+  };
+
+  const handleUpload = () => {
+    const itemNames = items.map(item => item.name);
+    
+    axios.post('http://localhost:8000/planner/', { items: itemNames })
+      .then(response => {
+        navigate("/share");
+      })
+  };
+
+  return (
+    <>
+      <div className="popup_backdrop" onClick={onClose}></div>
+      <div className="planner_popup">
+        <div className="close_button">
+          <button onClick={onClose}>×</button>
+        </div>
+        <h3>플래너 작성을 마무리하시겠어요?</h3>
+        <div className="pop-planner" ref={plannerRef}>
+          <div className="planner_name">Planner</div>
+          <ul className="planner_item">
+            {items.map((item, index) => (
+              <li key={index}>
+                {item.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="planner-button-container">
+          <button onClick={handleSave}>이미지 저장</button>
+          <button onClick={handleUpload}>플래너 등록</button>
+        </div>
+      </div>
+    </>
+  );
+}
+
 
 function Result() {
   const location = useLocation();
@@ -150,6 +204,7 @@ function Result() {
   const [map, setMap] = useState(null);
   const [center, setCenter] = useState({ x: x, y: y });
   const [selectedPlaceId, setSelectedPlaceId] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleDetailOpen = (place) => { 
     setSelectedPlaceId(place.content_id);
@@ -170,6 +225,18 @@ function Result() {
   const handleItemRemove = index => {
     setPlannerItems(currentItems => currentItems.filter((_, i) => i !== index));
   };
+
+  const handleOpenPopup = () => {
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
+  const handleSave = () => {};
+
+  const handleUpload = () => {};
 
   const createMap = useCallback((x, y, places) => {
     var mapContainer = document.getElementById('map'), 
@@ -231,9 +298,16 @@ function Result() {
         </div>
       </div>
       <div className="planner">
+        <div className="planner_header">
+          <div className="planner_name">Planner</div>
+          <button className="save_button" onClick={handleOpenPopup}>
+            <FontAwesomeIcon icon={faSave} />
+          </button>
+        </div>
         <Planner items={plannerItems} onItemRemove={handleItemRemove} />
       </div>
       {selectedPlaceId && <Detail content_id={selectedPlaceId} onClose={handleDetailClose} />}
+      {showPopup && <PlannerPopup items={plannerItems} onSave={handleSave} onUpload={handleUpload} onClose={handleClosePopup} />}
     </div>
   );
 }

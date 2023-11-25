@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./search.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const MARKER_IMAGE_URL =
   "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png";
@@ -241,11 +243,13 @@ const Search = () => {
                 style={{ 
                   width: "130px", 
                   borderRadius: "10px", 
-                  borderWidth: "1px",
+                  border: "1px solid #888",
                   padding: "0 10px"
                 }}
               />
-              <button type="submit">검색</button>
+              <button type="submit">
+                <FontAwesomeIcon icon={faSearch} />
+              </button>
             </form>
           </div>
         </div>

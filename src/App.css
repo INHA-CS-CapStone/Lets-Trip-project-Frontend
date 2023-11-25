@@ -42,3 +42,18 @@ body {
     transform: rotate(360deg);
   }
 }
+
+*::-webkit-scrollbar {
+  width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f5f5f5; 
+  border-radius: 10px; 
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 10px;
+}
+
