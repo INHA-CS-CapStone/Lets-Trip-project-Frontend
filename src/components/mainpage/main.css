@@ -17,7 +17,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 40px;
-  margin-top: 10px;
+  margin-top: 2%;
   margin-bottom: 40px;
   background-color: #fff;
   border-radius: 20px;
@@ -44,10 +44,9 @@
 button {
   font-size: 1em;
   border: 0;
-  margin-top: 20px;
   padding: 15px 25px;
   border-radius: 40px;
-  background-color: rgb(49, 93, 217);
+  background-color: rgb(61, 104, 224);
   color: #ffffff;
   transition: background-color 0.3s, color 0.3s;
 }

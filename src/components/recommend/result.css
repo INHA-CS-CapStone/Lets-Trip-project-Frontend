@@ -75,20 +75,6 @@
   overflow-y: scroll;
 }
 
-.list::-webkit-scrollbar {
-  width: 8px;
-}
-
-.list::-webkit-scrollbar-track {
-  background: #f5f5f5; 
-  border-radius: 10px; 
-}
-
-.list::-webkit-scrollbar-thumb {
-  background: #c5c5c5;
-  border-radius: 10px;
-}
-
 .list li {
   border-bottom: 1px solid #e5e6e6e8;
 }
@@ -113,93 +99,116 @@
 }
 
 .planner {
-    position: fixed;
-    z-index: 2;
-    right: 40px;
-    bottom: 60px;
-    width: 270px;
-    height: 400px;
-    padding: 20px;
-    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e6e8;
-    background-color: #fff;
-    border-radius: 5%;
-    overflow: auto;
-  }
-  
-  .planner_name{
-    color:#414141;
-    text-align: center;
-    font-size: 25px;
-    font-weight: 500;
-    margin-bottom: 15px;
-  }
+  position: fixed;
+  z-index: 2;
+  right: 40px;
+  bottom: 60px;
+  width: 270px;
+  height: 400px;
+  padding: 20px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e6e8;
+  background-color: #fff;
+  border-radius: 5%;
+  overflow: auto;
+}
 
-  .planner ul {
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .planner li {
-    color:#5e5e5e;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 15px;
-    width: 100%;
-  }
+.planner_name{
+  padding-left: 6%;
+  width: 94%;
+  color:#414141;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+  text-align: center;
+}
 
-  .place_info {
-    width: 40%;
-  }
+.planner_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .res_info {
-    margin-left: 7%;
-    width: 70%;
-  }
+.planner ul {
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin-top: 18px;
+}
 
-  .res_button_wrap {
-    margin-right: 5%;
-  }
-  
-  .planner button {
-    border: 1px solid #888;
-    border-radius: 20%;
-    background-color: #fff;
-    cursor: pointer;
-    font-size: 1em;
-    color: #888;
-    width: 20px;
-    height: 20px;
-    line-height: 18px;
-    text-align: center;
-    padding: 0;
-    margin: 12px 7px 9px 7px;
-  }
-  
-  .planner button:hover {
-    background-color:#e6e6e6;
-  }
+.planner li {
+  color:#5e5e5e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 15px;
+  width: 100%;
+}
+
+.place_info {
+  width: 40%;
+}
+
+.res_info {
+  margin-left: 7%;
+  width: 70%;
+}
+
+.res_button_wrap {
+  margin-right: 5%;
+}
+
+.planner_item_button {
+  border: 1px solid #888;
+  border-radius: 20%;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 1em;
+  color: #888;
+  width: 20px;
+  height: 20px;
+  line-height: 18px;
+  text-align: center;
+  padding: 0;
+  margin: 12px 7px 9px 7px;
+}
+
+.planner button:hover {
+  background-color:#e6e6e6;
+}
 
 .place_button_wrap {
   margin-right: 5px;
 }
 
 .select_button {
-    border: 1px solid #888;
-    border-radius: 20%;
-    background-color: #fff;
-    cursor: pointer;
-    font-size: 20px;
-    color: #888;
-    width: 25px;
-    height: 25px;
-    line-height: 18px;
-    text-align: center;
-    padding: 0;
-    padding-bottom: 1px;
+  border: 1px solid #888;
+  border-radius: 20%;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  color: #888;
+  width: 25px;
+  height: 25px;
+  line-height: 18px;
+  text-align: center;
+  padding: 0;
+  padding-bottom: 1px;
+}
+
+.save_button {
+  border: 1px solid #888;
+  border-radius: 20%;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  color: #888;
+  width: 32px;
+  height: 30px;
+  line-height: 18px;
+  text-align: center;
+  padding: 0 3px;
+  margin-top: 0;
 }
 
 .place button:hover {
@@ -214,7 +223,7 @@
   z-index: 10;  
   background: white; 
   max-width: 600px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
@@ -233,7 +242,6 @@
 }
 
 .popup_image {
-  margin: 3% 10%;
   width: 70%;
   height: auto;
   max-height: 300px;
@@ -241,44 +249,30 @@
 }
 
 .popup_text {
-  margin: 4% 6%;
+  margin: 6% 6%;
   font-family: "Noto Sans KR"; 
   font-size: 15px;
   line-height: 1.5; 
 }
 
-.popup button {
-    border: 1px solid #888;
-    border-radius: 20%;
-    background-color: #fff;
-    cursor: pointer;
-    font-size: 20px;
-    color: #888;
-    width: 35px;
-    height: 35px;
-    padding: 0;
+.close_button button {
+  border: 1px solid #888;
+  border-radius: 20%;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  color: #888;
+  width: 35px;
+  height: 35px;
+  padding: 0;
 }
 
-.popup button:hover {
+.close_button button:hover {
   background-color:#e6e6e6;
 }
 
-.popup::-webkit-scrollbar {
-  width: 8px;
-}
-
-.popup::-webkit-scrollbar-track {
-  background: #f5f5f5; 
-  border-radius: 10px; 
-}
-
-.popup::-webkit-scrollbar-thumb {
-  background: #c5c5c5;
-  border-radius: 10px;
-}
-
 .close_button {
-  margin-right: 20px;
+  margin: 20px 20px 0 0;
   text-align: right;
 }
 
@@ -291,4 +285,65 @@
 .num {
   margin: 18px;
   font-size: 20px;
+}
+
+.planner_popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background: white;
+  width: 450px;
+  height: 620px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pop-planner {
+  z-index: 2;
+  bottom: 60px;
+  width: 250px;
+  height: 400px;
+  padding: 20px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border: 1px solid #e5e6e8;
+  border-radius: 5%;
+  margin: 10px 0;
+}
+
+.pop-planner ul {
+  padding-top: 15px;
+  flex-wrap: wrap;
+  list-style: none;
+  flex-direction: column; 
+  align-content: start;
+}
+
+.pop-planner li {
+  color:#5e5e5e;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  width: 100%;
+  height: 40px;
+}
+
+.planner-button-container button {
+  font-size: 15px;
+  width: 135px;
+  margin: 25px 9px;
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.planner_popup .close_button {
+  width: 100%;
+  padding-right: 21px;
 }
