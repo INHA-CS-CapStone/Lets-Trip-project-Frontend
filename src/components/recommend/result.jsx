@@ -241,7 +241,7 @@ function Result() {
   const createMap = useCallback((x, y, places) => {
     var mapContainer = document.getElementById('map'), 
     mapOption = {
-        center: new kakao.maps.LatLng(37.566826, 126.9786567), 
+        center: new kakao.maps.LatLng(37.4500221, 126.653488), 
         level: 3
     };      
     var map = new kakao.maps.Map(mapContainer, mapOption);
