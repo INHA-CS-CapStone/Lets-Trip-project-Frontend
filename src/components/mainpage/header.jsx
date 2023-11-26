@@ -14,9 +14,8 @@ class Header extends Component {
             <li>
               <Link to="/type">플래너 제작</Link>
             </li>
-
             <li>
-              <Link to="/contact">문의하기</Link>
+              <Link to="/planners">플래너 열람</Link>
             </li>
           </ul>
         </div>

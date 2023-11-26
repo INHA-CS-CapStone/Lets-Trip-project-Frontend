@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./search.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const MARKER_IMAGE_URL =
   "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png";
@@ -124,10 +126,7 @@ const Search = () => {
       );
 
       if (isConfirmed) {
-        console.log(`${places.place_name}가 선택되었습니다.`);
-        navigate(`/result?x=${places.x}&y=${places.y}`);
-      } else {
-        console.log("장소 선택이 취소되었습니다.");
+        navigate(`/result?type=place&x=${places.x}&y=${places.y}`);
       }
     };
 
@@ -233,15 +232,24 @@ const Search = () => {
         <div className="option">
           <div>
             <form onSubmit={searchPlaces}>
-              숙소 :{" "}
+              {""}
               <input
                 type="text"
                 id="keyword"
                 size="10"
                 value={searchKeyword}
                 onChange={handleSearchInputChange}
+                placeholder="숙소를 입력해주세요!"
+                style={{ 
+                  width: "130px", 
+                  borderRadius: "10px", 
+                  border: "1px solid #888",
+                  padding: "0 10px"
+                }}
               />
-              <button type="submit">검색하기</button>
+              <button type="submit">
+                <FontAwesomeIcon icon={faSearch} />
+              </button>
             </form>
           </div>
         </div>

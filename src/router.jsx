@@ -5,7 +5,7 @@ import Result from "./components/recommend/result";
 import Type from "./components/recommend/type";
 import Search from "./components/recommend/search";
 import Hashtag from "./components/recommend/hashtag";
-import Contact from "./components/mainpage/contact";
+import Planners from "./components/mainpage/planners";
 
 function Router() {
   return (
@@ -18,7 +18,7 @@ function Router() {
           <Route path="/hashtag" element={<Hashtag />}></Route>
           <Route path="/search" element={<Search />}></Route>
           <Route path="/result" element={<Result />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/planners" element={<Planners />} />
         </Routes>
       </BrowserRouter>
     </div>
