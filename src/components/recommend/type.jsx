@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Swal from 'sweetalert2'
 import "./type.css";
 
 function Type() {
@@ -16,7 +17,11 @@ function Type() {
 
   const handleNextClick = () => {
     if (selectedTypes.length < 1) {
-      alert("선호하는 관광타입을 선택해 주세요.");
+      Swal.fire({
+        text: '선호하는 관광타입을 선택해 주세요.',
+        icon: 'warning',
+        confirmButtonText: '확인'
+      })
     } else {
       navigate("/hashtag", { state: { selectedTypes } });
     }

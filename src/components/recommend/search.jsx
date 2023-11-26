@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./search.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2'
+import "./search.css";
 
 const MARKER_IMAGE_URL =
   "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png";
@@ -21,7 +22,11 @@ const Search = () => {
     event.preventDefault();
 
     if (!searchKeyword.replace(/^\s+|\s+$/g, "")) {
-      alert("숙소 이름을 입력해주세요.");
+      Swal.fire({
+        text: '숙소 이름을 입력해주세요.',
+        icon: 'warning',
+        confirmButtonText: '확인'
+      })
       return;
     }
 
@@ -38,11 +43,19 @@ const Search = () => {
         break;
 
       case ZERO_RESULT:
-        alert("검색 결과가 존재하지 않습니다.");
+        Swal.fire({
+          text: '검색 결과가 존재하지 않습니다.',
+          icon: 'warning',
+          confirmButtonText: '확인'
+        })
         break;
 
       case ERROR:
-        alert("검색 결과 중 오류가 발생했습니다.");
+        Swal.fire({
+          text: '검색 결과 중 오류가 발생했습니다.',
+          icon: 'error',
+          confirmButtonText: '확인'
+        })
         break;
 
       default:
@@ -121,14 +134,19 @@ const Search = () => {
     itemElement.className = "item";
 
     itemElement.onclick = () => {
-      const isConfirmed = window.confirm(
-        `선택하신 숙소가 [${places.place_name}]이(가) 맞나요?`
-      );
-
-      if (isConfirmed) {
-        navigate(`/result?type=place&x=${places.x}&y=${places.y}`);
-      }
+      Swal.fire({
+        html: `[${places.place_name}]<br/>선택하신 숙소가 맞나요?`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: '네, 맞아요',
+        cancelButtonText: '다시 선택할게요'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate(`/result?type=place&x=${places.x}&y=${places.y}`);
+        }
+      })
     };
+    
 
     return itemElement;
   };
@@ -210,7 +228,7 @@ const Search = () => {
   useEffect(() => {
     const mapContainerElement = document.getElementById("map");
     const mapOption = {
-      center: new kakao.maps.LatLng(33.450701, 126.570667),
+      center: new kakao.maps.LatLng(37.4500221, 126.653488),
       level: 3,
     };
     const kakaoMap = new kakao.maps.Map(mapContainerElement, mapOption);

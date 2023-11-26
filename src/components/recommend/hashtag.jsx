@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from 'sweetalert2'
 import "./hashtag.css";
 
 function Hashtag() {
@@ -18,7 +19,12 @@ function Hashtag() {
   };
   const handleCompleteClick = () => {
     if (selectedTags.length < 1) {
-      alert("선호하는 여행지 키워드를 선택해주세요.");
+      Swal.fire({
+        text: '선호하는 여행지 키워드를 선택해 주세요.',
+        icon: 'warning',
+        confirmButtonText: '확인'
+      })
+      
     } else {
       axios.post("http://localhost:8000/selection/", {
         tourismTypes: selectedTypes,
