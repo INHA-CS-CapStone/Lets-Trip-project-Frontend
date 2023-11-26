@@ -1,0 +1,59 @@
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(162, 198, 254);
+}
+
+.selecting {
+  text-align: center;
+}
+
+.selecting button {
+  margin: 5px;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  margin: auto;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+*::-webkit-scrollbar {
+  width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f5f5f5; 
+  border-radius: 10px; 
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 10px;
+}
+

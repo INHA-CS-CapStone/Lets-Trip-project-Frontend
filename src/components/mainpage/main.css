@@ -1,0 +1,65 @@
+.main-title,
+.sub-title {
+  font-size: 36px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.main-text,
+.sub-text {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.wrap_box {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  margin-top: 2%;
+  margin-bottom: 40px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.contact-container h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333; 
+}
+
+.contact-container strong {
+  color: #e17055; 
+}
+
+.contact-container p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  color: #555;
+}
+
+button {
+  font-size: 1em;
+  border: 0;
+  padding: 15px 25px;
+  border-radius: 40px;
+  background-color: rgb(61, 104, 224);
+  color: #ffffff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(39, 70, 155);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.special-button {
+  margin-top: 20px;
+}
