@@ -133,7 +133,7 @@ function RestaurantList({ x, y, onRestaurantSelect }) {
 function Planner({ items, onItemRemove }) {
   return (
     <div>
-      <ul className="planner_item">
+      <ul>
         {items.map((item, index) => (
           <li key={index}>
             {item.name}
@@ -176,7 +176,7 @@ function PlannerPopup({ items, onSave, onUpload, onClose }) {
         <h3>플래너 작성을 마무리하시겠어요?</h3>
         <div className="pop-planner" ref={plannerRef}>
           <div className="planner_name">Planner</div>
-          <ul className="planner_item">
+          <ul>
             {items.map((item, index) => (
               <li key={index}>
                 {item.name}
