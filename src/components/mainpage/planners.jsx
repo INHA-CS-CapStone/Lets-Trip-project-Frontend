@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./share.css";
+import "./planners.css";
 
-function Share() {
+function Planners() {
   const [planners, setPlanners] = useState([]);
 
   const deletePlanner = (id) => {
@@ -52,4 +52,4 @@ function Share() {
   );
 }
 
-export default Share;
+export default Planners;

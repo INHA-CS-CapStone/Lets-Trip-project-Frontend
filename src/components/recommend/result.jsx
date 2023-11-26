@@ -162,7 +162,7 @@ function PlannerPopup({ items, onSave, onUpload, onClose }) {
     
     axios.post('http://localhost:8000/planner/', { items: itemNames })
       .then(response => {
-        navigate("/share");
+        navigate("/planners");
       })
   };
 
