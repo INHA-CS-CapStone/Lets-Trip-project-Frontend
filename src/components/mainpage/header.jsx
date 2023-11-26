@@ -15,7 +15,7 @@ class Header extends Component {
               <Link to="/type">플래너 제작</Link>
             </li>
             <li>
-              <Link to="/share">플래너 열람</Link>
+              <Link to="/planners">플래너 열람</Link>
             </li>
           </ul>
         </div>
